@@ -1,24 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import List from './components/List';
+import Datas from './components/datas';
+import { Box, Container, Button, Text } from "@chakra-ui/react";
 
 function App() {
+  const [people, setPeople] = useState(Datas);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container maxW="xl" centerContent bg="pink" p={10}>
+      <Box>
+        <Text fontSize="3xl">{people.length} Birthdays Today</Text>
+        <List people={people}/>
+        <Button colorScheme="teal" size="lg" onClick={() => setPeople([])}>
+          Clear All
+        </Button>
+      </Box>
+      </Container>
   );
 }
 
